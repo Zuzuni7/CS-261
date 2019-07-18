@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            td {
+                border: 1px double black ;
+                height: 150px;
+                width: 150px;
+                font-size: 150px;
+                text-align: center;
+            }
+
+           .flex1 {
+                display: flex;
+                width: 150%;
+           }
+
+            .flex {
+                border: 3px solid black;
+                height: 150px;
+                width: 150px;
+                font-size: 150px;
+                text-align: center;
+            }
+            .divBoard {
+                display: grid;
+                grid-template-columns: 100px 100px 100px;
+                grid-template-rows: 100px 100px 100px;
+                justify-content: center;
+            }
+            .divBoard > div {
+                border-right: 1px solid;
+                border-bottom: 1px solid;
+                font-size: 5em;
+                text-align: center;
+            }
+            .divBoard > div:nth-child(3n) {
+                border-right: 0;
+            }
+            .divBoard > div:nth-child(n + 7) {
+                border-bottom: 0;
+            }
+        </style>
+
+        <script>
+            const divBoard = document.querySelector('.divBoard');
+            const reset = document.getElementById('reset');
+            const player1 = 'X';
+            const player2 = 'O';
+            let player = player1;
+           
+            function selectSquare(e) {
+                console.log(e.target);
+                e.target.innerHTML = player;
+                if (player === player1) player = player2;
+                else player = player1;
+            }
+
+            function reset() {
+                const divBoard = document.querySelector('.divBoard');
+                for (let i = 0; i < divBoard.children.length; i++) {
+                        divBoard.children[i].innerText = '';
+                }
+                const children = Array.from(divBoard.children);
+                const empty = children.filter(function(child) {
+                    return child.innerText == 'X' || child.innerText == 'O';
+                });
+                console.log(empty);
+            }
+
+            divBoard.addEventListener('click', selectSquare);
+            reset.addEventListener('click', reset);
+        </script>
+    </head>
+    <body>
+        <div class="divBoard">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <button id="reset">Reset</button>
+    </body>
+</html>

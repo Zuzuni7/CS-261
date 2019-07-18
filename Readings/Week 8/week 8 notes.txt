@@ -1,0 +1,37 @@
+Canvas,  SVG, and Drag & Drop:
+
+- Canvas is an html5 element that creates a 2D space for drawing, editing, and formatting images. 
+
+-  Drawing on the canvas is done using JS. Canvas JS API. 
+
+"You may be asking yourself,why not set the width and height via CSS? It’s because the width and height attributes determine how large the canvas’s coordinate system is. If we don’t specify width and height, the canvas element will default to a width of 300 and a height of 150. If we set the width and height for a canvas only in CSS, the canvas element will be 300 by 150, and the CSS properties will simply determine how large the box is that displays the image."
+
+- You can edit canvas style through CSS just like a normal html element. 
+
+-  Variations on fillStyle are altered by context.strokestyle and fillstyle. You can set the color by setting it equal to whatevever color enclosed in "...". You can also set more specific colors by using the RGBO layout. 
+
+- create a rectangle: context.fillRect(10,10,100,100);
+
+- gradient.addColorStop(0, "blue"). changing the gradient happens in a separate function that can be called "drawGradient()" for example. to create the context...
+
+     var gradient = context.createLinearGradient(0,0,0,200); 
+
+- Canvas has a built-in function for saving your canvas image as a png file.
+
+- We can draw an image to canvas as well instead of creating our own in canvas by using our DOM. The image must be accessible online(for example in a public google docs ).
+
+- All RGB values can be edited on the existing image to convert it to black and white or to simply alter the colors by doing arithmetic with the RBG values in a loop for the entire array of data. 
+
+Manipulating Videos:
+
+-  you can overlay a 2d canvas over th top of the video to change its appearance and only apply the edit by adding an event listerner for the "play" event. 
+
+function makeVideoOldTimey() { var video = document.getElementById("video"); var canvas = document.getElementById("canvasOverlay"); var context = canvas.getContext("2d");
+video.addEventListener("play", function() { draw(video,context,canvas); }, false); 
+}
+
+ 
+
+I think that is pretty sick!
+
+- There are also built in functions that allow us to check if the video is paused or has ended in which case we can edit the image.

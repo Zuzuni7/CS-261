@@ -1,0 +1,32 @@
+Form Validation
+
+Form validation is checking to make sure user input into a form fits the requirements for the form data. Miswritten email address, poorly formatted phone numbers,  or blank fields etc… can cause problems with retrieiving data and validating accounts. It also helps with securing information for a user. For example requiring a more diverse passwords for account information. The database needs to store the right data in the right format, security must be ensured for the user, and the system must be protected from malintended users as well. 
+
+Client-side validation:
+	Occurs in the browser before the data has been submitted to the server. It is more user friendly because of its speed of use. We can utilize client-side validation through built-in form validations from HTML5 and by using JS validation functions. This can include REGEX expressions. 
+Server-Side Validation:
+	Occurs on the server after the data is submitted. It occurs before the data is submitted to the db. If the data fails the validation a response is sent back to the client with corrections that the user needs to make. It is not as user-friend as client-side validation because it requires submission before validating as opposed to client-side updating as changes are made to the form. 
+
+-	:valid vs :invalid
+o	We can use CSS styles to highlight invlaid entries as red
+Input:invalid {
+	Border: 2px dashed red
+}
+Error messages in client-side validation can be customized with event listeners. 
+	Obj.setCustomValidity(“New Error message”);
+
+There are a few built-in constraint validation API properties. 
+-	Validation message: A localized message describing the validation constraints that the control doesn't satisfy (if any) or the empty string if the control is not a candidate for constraint validation (willValidate is false) or the element's value satisfies its constraints.
+-	Validity- A ValidityState object describing the validity state of the element. See that article for details of possible validity states.
+-	willValidate : Returns true if the element will be validated when the form is submitted; false otherwise.
+Methods:
+-	checkValidity() : returns true if the element’s value has no validity problems.
+-	HTMLFormElelment.reportValidity() : Returns true if the element or its child controls satisfy validation constraints. When false is returned, cancelable invalidevents are fired for each invalid element and validation problems are reported to the user.
+-	SetCustomValidity(msg) : Adds a custom error message to the element; if you set a custom error message, the element is considered to be invalid, and the specified error is displayed. This lets you use JavaScript code to establish a validation failure other than those offered by the standard constraint validation API. The message is shown to the user when reporting the problem. If the argument is the empty string, the custom error is cleared.
+
+FETCH
+
+In order to retrieve data from an external source through JS we can use many methods. One of which is fetch. By using fetch API we can asynchronously retrieve data rom other API’s in the form of JSON strings. The differences between jQeury and fetch are mainly that 
+-	The promise returned from fetch won’t reject on HTTP error status even if it is a 400 or 500 error. The ok status will be set to false.
+-	By default, feth won’t send or receive cookies from the server, resulting in unauthenticated requests if the site relies on maintaining a user session. 
+
